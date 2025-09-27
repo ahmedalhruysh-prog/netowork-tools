@@ -19,9 +19,32 @@ class _PingpageState extends State<Pingpage> {
 
 
 
+
   @override
 
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+
+      title: Text("أداة Ping"),
+      backgroundColor: Colors.blue[900],
+
+    body: Padding(
+    padding: const EdgeInsets.all(16.0),
+    child: Column(
+    children: [
+    // مربع إدخال المستخدم
+    TextField(
+    controller: _controller,
+    decoration: InputDecoration(
+    labelText: "أدخل IP أو Domain",
+    border: OutlineInputBorder(),
+    ),
+    ),
+    SizedBox(height: 10),
+        ]
+    ),
+    ),
+    );
+
   }
 }
