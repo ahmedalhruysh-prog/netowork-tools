@@ -51,3 +51,15 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+class ToolCard extends StatelessWidget {
+  final String title;
+  final Color color;
+  final IconData icon;
+  final Widget page;
+  const ToolCard({super.key,
+    required this.title,
+    required this.color,
+    required this.icon,
+    required this.page,
+  });
+
