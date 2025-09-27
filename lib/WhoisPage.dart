@@ -21,6 +21,13 @@ class _WhoispageState extends State<Whoispage> {
       return;
     }
 
+    setState(() {
+      _result = "🔍 جاري البحث عن معلومات النطاق $domain...\n";
+      _isLoading = true;
+    });
+
+
+
 
   @override
   Widget build(BuildContext context) {
