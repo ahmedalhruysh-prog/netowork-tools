@@ -1,10 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:networktool/PingPage.dart';
-import 'package:networktool/PortScannerPag.dart';
-import 'package:networktool/TraceroutePage.dart';
-import 'package:networktool/WhoisPage.dart';
-import 'package:whois/whois.dart';
+import 'package:networktooll/PingPage.dart';
 
 main(){
   runApp(May());
@@ -39,8 +35,8 @@ class HomePage extends StatelessWidget {
           mainAxisSpacing: 16,
           childAspectRatio: 1,
           children: [
-            ToolCard(title: "ping", color:Colors.blue, icon:Icons.wifi,page: PingPage(),),
-            ToolCard(title: "Traceroute", color:Colors.orange, icon: Icons.alt_route_rounded,page:TraceroutePage()),
+            ToolCard(title: "ping", color:Colors.blue, icon:Icons.wifi,page:Pingpage()),
+            ToolCard(title: "Traceroute", color:Colors.orange, icon: Icons.alt_route_rounded,page:Tracero),
             ToolCard(title: "port", color:Colors.green, icon: Icons.shield_moon_rounded,page:PortScannerPage()),
             ToolCard(title: "Whois", color:Colors.purple, icon:Icons.info_outline_rounded,page: WhoisPage(),),
 
