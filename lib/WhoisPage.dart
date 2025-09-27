@@ -26,6 +26,20 @@ class _WhoispageState extends State<Whoispage> {
       _isLoading = true;
     });
 
+    try {
+      final response = await Whois.lookup(domain);
+      setState(() {
+        _result = response;
+      });
+    } catch (e) {
+      setState(() {
+        _result = "❌ فشل في جلب معلومات WHOIS: $e";
+      });
+    }
+
+    setState(() => _isLoading = false);
+  }
+
 
 
 
