@@ -63,3 +63,35 @@ class ToolCard extends StatelessWidget {
     required this.page,
   });
 
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (_)=>page));
+
+      },
+      child: Card(
+        color: color,
+        elevation: 10,
+        shape: RoundedSuperellipseBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child:
+        Padding(padding: EdgeInsets.all(16),
+          child:Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(icon,color:Colors.white,size: 60,),
+
+              Text(title,style: TextStyle(color: Colors.white,fontSize: 23,fontWeight: FontWeight.bold)),
+            ],
+
+          ),),
+      ),
+
+
+    );
+  }
+}
+
