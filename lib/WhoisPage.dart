@@ -61,6 +61,20 @@ class _WhoispageState extends State<Whoispage> {
                 child: Text("ابدأ Whois"),
               ),
               SizedBox(height: 20),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Card(
+                    elevation: 4,
+                    child: Padding(
+                      padding: EdgeInsets.all(12),
+                      child: Text(
+                        _result,
+                        style: TextStyle(fontFamily: "monospace"),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
         ]),
     ),
     );
