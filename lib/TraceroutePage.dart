@@ -16,6 +16,19 @@ class _TraceroutePageState extends State<TraceroutePage> {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+        appBar: AppBar(title: Text("Traceroute"), backgroundColor: Colors.blue[900]),
+        body: Padding(
+          padding: EdgeInsets.all(16),
+          child: Column(
+            children: [
+            TextField(
+            controller: _controller,
+            decoration: InputDecoration(labelText: "أدخل اسم الموقع أو IP"),
+          ),
+         SizedBox(height: 10),
+        ]),
+    ),
+    );
   }
 }
