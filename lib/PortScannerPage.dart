@@ -32,6 +32,14 @@ class _PortScannerPageState extends State<PortScannerPage> {
     5900: 'VNC',
     8080: 'HTTP-Alt',
   };
+  Future<void> _scanPorts() async {
+    final host = _controller.text.trim();
+    if (host.isEmpty) {
+      setState(() {
+        _result = "⚠ أدخل عنوان IP أو اسم Host أولاً";
+      });
+      return;
+    }
 
 
   @override
@@ -51,6 +59,12 @@ class _PortScannerPageState extends State<PortScannerPage> {
               border: OutlineInputBorder(),
             ),
           ),
+              const SizedBox(height: 16),
+              ElevatedButton(
+                onPressed: _isScanning ? null : _scanPorts,
+                child: const Text("ابدأ الفحص"),
+              ),
+              const SizedBox(height: 16),
       ]  ),
     ),
     );
