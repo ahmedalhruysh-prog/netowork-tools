@@ -8,7 +8,19 @@ class Pingpage extends StatefulWidget {
 }
 
 class _PingpageState extends State<Pingpage> {
+  //متغير يخزن النتائج
+  String _result = "";
+
+  // متغير نتحكم فيه بالنص اللي يكتبه المستخدم (IP أو Domain)
+  final TextEditingController _controller = TextEditingController();
+
+
+
+
+
+
   @override
+
   Widget build(BuildContext context) {
     return const Placeholder();
   }
