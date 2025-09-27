@@ -61,6 +61,17 @@ class _PortScannerPageState extends State<PortScannerPage> {
           });
         }
       }
+      setState(() {
+        _result += "\n🎯 الفحص انتهى.";
+        _isScanning = false;
+      });
+    } catch (e) {
+      setState(() {
+        _result = "❌ حصل خطأ: $e";
+        _isScanning = false;
+      });
+    }
+  }
 
 
       @override
