@@ -35,7 +35,21 @@ class _TraceroutePageState extends State<TraceroutePage> {
       });
       },
 
-    );
+
+    onDone: () {
+      setState(() {
+        _result += "\n✅ انتهى Traceroute.";
+        _isRunning = false;
+      });
+    }, onError: (e) {
+    setState(() {
+    _result += "❌ خطأ: $e\n";
+    _isRunning = false;
+    });
+    });
+  }
+
+
     @override
     Widget build(BuildContext context) {
       return Scaffold(
