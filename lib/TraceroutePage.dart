@@ -9,6 +9,9 @@ class TraceroutePage extends StatefulWidget {
 }
 
 class _TraceroutePageState extends State<TraceroutePage> {
+  TextEditingController _controller = TextEditingController();
+  String _result = "";
+  bool _isRunning = false;
 
 
   @override
