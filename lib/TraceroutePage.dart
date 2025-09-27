@@ -19,28 +19,52 @@ class _TraceroutePageState extends State<TraceroutePage> {
       setState(() => _result = "⚠ الرجاء إدخال اسم الموقع أو IP");
       return;
     }
+    setState(() {
+      _result = "🔍 بدء Traceroute إلى $host...\n";
+      _isRunning = true;
+    });
 
+// نستخدم Ping لكن نحدد maxHop عشان يشتغل كـ traceroute
+    final traceroute = Ping(host, count: 1,ttl: 30);
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(title: Text("Traceroute"), backgroundColor: Colors.blue[900]),
+    traceroute.stream.listen((event) {
+      setState(() {
+        _result += "Hop ${event.response?.ttl} "
+            "➡ ${event.response?.ip ?? 'No response'} "
+            "⏱ ${event.response?.time?.inMilliseconds ?? 0} ms\n";
+      });
+      },
+
+    );
+    @override
+    Widget build(BuildContext context) {
+      return Scaffold(
+        appBar: AppBar(
+            title: Text("Traceroute"), backgroundColor: Colors.blue[900]),
         body: Padding(
           padding: EdgeInsets.all(16),
           child: Column(
-            children: [
-            TextField(
-            controller: _controller,
-            decoration: InputDecoration(labelText: "أدخل اسم الموقع أو IP"),
-          ),
-         SizedBox(height: 10),
-              ElevatedButton(
-                onPressed: _isRunning ? null : _startTraceroute,
-                child: Text("ابدأ Traceroute"),
-              ),
-              SizedBox(height: 20),
-        ]),
-    ),
-    );
+              children: [
+                TextField(
+                  controller: _controller,
+                  decoration: InputDecoration(
+                      labelText: "أدخل اسم الموقع أو IP"),
+                ),
+                SizedBox(height: 10),
+                ElevatedButton(
+                  onPressed: _isRunning ? null : _startTraceroute,
+                  child: Text("ابدأ Traceroute"),
+                ),
+                SizedBox(height: 20),
+              ]),
+        ),
+      );
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    throw UnimplementedError();
   }
 }
