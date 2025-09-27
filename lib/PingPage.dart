@@ -69,7 +69,24 @@ class Pingpage extends StatefulWidget {
                   child: Text("ابدأ Ping"),
                 ),
                 SizedBox(height: 20),
-
+                // عرض النتائج في صندوق قابل للتمرير
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Card(
+                      elevation: 3,
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Text(
+                          _result,
+                          style: TextStyle(
+                            fontFamily: "monospace",
+                            fontSize: 14,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
               ]
           ),
         ),
