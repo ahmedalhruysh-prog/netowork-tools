@@ -40,33 +40,61 @@ class _PortScannerPageState extends State<PortScannerPage> {
       });
       return;
     }
+    setState(() {
+      _result = "جارٍ الفحص...\n";
+      _isScanning = true;
+    });
+    try {
+      final stream = PortScanner.scanPortsForSingleDevice(
+        host,
+        startPort: 1,
+        endPort: 1024,
+        timeout: const Duration(seconds: 1),
+      );
+      // كل عنصر هو ActiveHost يحوي قائمة openPorts
+      await for (final activeHost in stream) {
+        for (final openPort in activeHost.openPorts) {
+          final serviceName = _wellKnownPorts[openPort.port] ?? 'غير معروف';
+          setState(() {
+            _result +=
+            "✅ المنفذ ${openPort.port} مفتوح ($serviceName)\n";
+          });
+        }
+      }
+
+
+      @override
+      Widget build(BuildContext context) {
+        return Scaffold(
+          appBar: AppBar(
+            title: const Text("فحص المنافذ (Port Scanner)"),
+          ),
+          body: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+                children: [
+                  TextField(
+                    controller: _controller,
+                    decoration: const InputDecoration(
+                      labelText: "أدخل IP أو Host",
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  ElevatedButton(
+                    onPressed: _isScanning ? null : _scanPorts,
+                    child: const Text("ابدأ الفحص"),
+                  ),
+                  const SizedBox(height: 16),
+                ]),
+          ),
+        );
+      }
+    }
 
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text("فحص المنافذ (Port Scanner)"),
-        ),
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-            TextField(
-            controller: _controller,
-            decoration: const InputDecoration(
-              labelText: "أدخل IP أو Host",
-              border: OutlineInputBorder(),
-            ),
-          ),
-              const SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: _isScanning ? null : _scanPorts,
-                child: const Text("ابدأ الفحص"),
-              ),
-              const SizedBox(height: 16),
-      ]  ),
-    ),
-    );
+    // TODO: implement build
+    throw UnimplementedError();
   }
-}
