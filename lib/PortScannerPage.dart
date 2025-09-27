@@ -97,6 +97,14 @@ class _PortScannerPageState extends State<PortScannerPage> {
                     child: const Text("ابدأ الفحص"),
                   ),
                   const SizedBox(height: 16),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Text(
+                        _result,
+                        style: const TextStyle(fontFamily: "monospace"),
+                      ),
+                    ),
+                  ),
                 ]),
           ),
         );
