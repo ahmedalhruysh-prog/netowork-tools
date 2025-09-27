@@ -10,6 +10,13 @@ class PortScannerPage extends StatefulWidget {
 }
 
 class _PortScannerPageState extends State<PortScannerPage> {
+
+  final TextEditingController _controller = TextEditingController();
+  String _result = "";
+  bool _isScanning = false;
+
+
+
   @override
   Widget build(BuildContext context) {
     return const Placeholder();
