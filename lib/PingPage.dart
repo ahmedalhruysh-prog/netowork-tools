@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:dart_ping/dart_ping.dart';
 class Pingpage extends StatefulWidget {
   const Pingpage({super.key});
 
@@ -26,6 +26,21 @@ class Pingpage extends StatefulWidget {
       });
       return;
     }
+
+    setState(() {
+      _result = "🔄 بدء تجربة Ping على $ip ...\n";
+    });
+
+    // إنشاء عملية Ping بعدد 4 مرات
+    final ping = Ping(ip, count: 4);
+
+    // نتابع النتائج اللي توصل من Ping
+    ping.stream.listen((event) {
+      setState(() {
+        _result += event.toString() + "\n";
+      });
+    });
+  }
 
     @override
     Widget build(BuildContext context) {
