@@ -13,6 +13,13 @@ class _TraceroutePageState extends State<TraceroutePage> {
   String _result = "";
   bool _isRunning = false;
 
+  void _startTraceroute() {
+    String host = _controller.text.trim();
+    if (host.isEmpty) {
+      setState(() => _result = "⚠ الرجاء إدخال اسم الموقع أو IP");
+      return;
+    }
+
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +34,11 @@ class _TraceroutePageState extends State<TraceroutePage> {
             decoration: InputDecoration(labelText: "أدخل اسم الموقع أو IP"),
           ),
          SizedBox(height: 10),
+              ElevatedButton(
+                onPressed: _isRunning ? null : _startTraceroute,
+                child: Text("ابدأ Traceroute"),
+              ),
+              SizedBox(height: 20),
         ]),
     ),
     );
