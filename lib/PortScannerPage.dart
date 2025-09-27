@@ -36,6 +36,23 @@ class _PortScannerPageState extends State<PortScannerPage> {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text("فحص المنافذ (Port Scanner)"),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+            TextField(
+            controller: _controller,
+            decoration: const InputDecoration(
+              labelText: "أدخل IP أو Host",
+              border: OutlineInputBorder(),
+            ),
+          ),
+      ]  ),
+    ),
+    );
   }
 }
