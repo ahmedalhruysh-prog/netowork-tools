@@ -14,6 +14,13 @@ class _WhoispageState extends State<Whoispage> {
   String _result = "";
   bool _isLoading = false;
 
+  void _lookupWhois() async {
+    String domain = _controller.text.trim();
+    if (domain.isEmpty) {
+      setState(() => _result = "⚠ الرجاء إدخال اسم النطاق (Domain)");
+      return;
+    }
+
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +35,11 @@ class _WhoispageState extends State<Whoispage> {
             decoration: InputDecoration(labelText: "أدخل اسم النطاق (Domain)"),
           ),
           SizedBox(height: 10),
+              ElevatedButton(
+                onPressed: _isLoading ? null : _lookupWhois,
+                child: Text("ابدأ Whois"),
+              ),
+              SizedBox(height: 20),
         ]),
     ),
     );
