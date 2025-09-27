@@ -9,6 +9,12 @@ class Whoispage extends StatefulWidget {
 }
 
 class _WhoispageState extends State<Whoispage> {
+
+  TextEditingController _controller = TextEditingController();
+  String _result = "";
+  bool _isLoading = false;
+
+
   @override
   Widget build(BuildContext context) {
     return const Placeholder();
